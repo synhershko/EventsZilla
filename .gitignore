@@ -1,0 +1,8 @@
+_Resharper*/
+Plugins/
+Data/*
+obj/
+bin/
+*.suo
+*.sln.cache
+*.user

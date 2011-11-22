@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsZilla", "EventsZilla\EventsZilla.csproj", "{D9601D08-498E-4C0C-9155-BE4A1194837D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loci.Common", "Loci.Common\Loci.Common.csproj", "{238D8AAA-FD89-48E7-9446-ADCDE845B58E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D9601D08-498E-4C0C-9155-BE4A1194837D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9601D08-498E-4C0C-9155-BE4A1194837D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9601D08-498E-4C0C-9155-BE4A1194837D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9601D08-498E-4C0C-9155-BE4A1194837D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{238D8AAA-FD89-48E7-9446-ADCDE845B58E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{238D8AAA-FD89-48E7-9446-ADCDE845B58E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{238D8AAA-FD89-48E7-9446-ADCDE845B58E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{238D8AAA-FD89-48E7-9446-ADCDE845B58E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
