@@ -49,6 +49,7 @@ namespace EventsZilla.Controllers
 			}
 
 			// All went smooth, save the registration
+			reg.RegisteredAt = DateTimeOffset.Now;
 			RavenSession.Store(reg);
 
 			ViewBag.Message = MvcHtmlString.Create("Registration successful!");
