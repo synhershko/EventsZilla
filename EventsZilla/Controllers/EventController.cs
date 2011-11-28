@@ -48,6 +48,13 @@ namespace EventsZilla.Controllers
 				return View("Index", e);
 			}
 
+			// Check to see if there is already a registration record for this email address to this event (we don't care for staleness here)
+			if (RavenSession.Query<EventRegistration>().Where(x => x.EventId == eventId && x.RegistrantEmail == reg.RegistrantEmail).FirstOrDefault() != null)
+			{
+				ViewBag.Message = MvcHtmlString.Create("You already registered to this event");
+				return View("Index", e);
+			}
+
 			// All went smooth, save the registration
 			reg.RegisteredAt = DateTimeOffset.Now;
 			RavenSession.Store(reg);
