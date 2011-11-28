@@ -1,16 +1,20 @@
 ﻿@model EventsZilla.Models.Event
-
 @{
     ViewBag.Title = "Create a new event";
 }
 
-<h2>Create a new event</h2>
+@section HeadSection {
+<script type="text/javascript" src="@Url.Content("~/Static/Scripts/MarkdownDeepLib.min.js")"></script>
+<link rel="stylesheet" href="@Url.Content("~/Static/Scripts/mdd_styles.css")">
+}
 
-@using (Html.BeginForm()) {
+<h2>
+    Create a new event</h2>
+@using (Html.BeginForm())
+{
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>Event</legend>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.Title)
         </div>
@@ -23,9 +27,20 @@
             @Html.LabelFor(model => model.Description)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Description)
-            @Html.ValidationMessageFor(model => model.Description)
+            <div class="mdd_toolbar">
+            </div>
+            @Html.TextAreaFor(x => x.Description, new { @class = "mdd_editor", cols = 50, rows = 10 })
+            <div class="mdd_resizer">
+            </div>
+            <div class="mdd_preview">
+            </div>
         </div>
+        <script type="text/javascript">
+                $("textarea.mdd_editor").MarkdownDeep({
+                        help_location: "@Url.Content("~/Static/Scripts/mdd_help.htm")",
+                        disableTabHandling: true
+                    });
+        </script>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.RegistrationOpens)
@@ -34,7 +49,6 @@
             @Html.EditorFor(model => model.RegistrationOpens)
             @Html.ValidationMessageFor(model => model.RegistrationOpens)
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.RegistrationCloses)
         </div>
@@ -42,7 +56,6 @@
             @Html.EditorFor(model => model.RegistrationCloses)
             @Html.ValidationMessageFor(model => model.RegistrationCloses)
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.AvailableSeats)
         </div>
@@ -50,13 +63,11 @@
             @Html.EditorFor(model => model.AvailableSeats)
             @Html.ValidationMessageFor(model => model.AvailableSeats)
         </div>
-
         <p>
             <input type="submit" value="Create" />
         </p>
     </fieldset>
 }
-
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Web.Mvc;
 
 namespace EventsZilla.Models
 {
@@ -18,6 +19,8 @@ namespace EventsZilla.Models
 		public string Title { get; set; }
 		public string Slug { get; set; }
 
+		[Required]
+		[AllowHtml]
 		[DataType(DataType.MultilineText)]
 		public string Description { get; set; } // markdown content
 
