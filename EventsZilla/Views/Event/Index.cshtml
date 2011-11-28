@@ -7,6 +7,9 @@
 
 <p>@ViewBag.Message</p>
 
+<p><a href="#register">Register to this event...</a></p>
+
 @{ Html.RenderPartial("EventDisplayPartial", Model); }
 
+<a name="register></a>
 @{ Html.RenderPartial("RegistrationFormPartial", new EventRegistration {EventId = Model.FullEventId() }); }
