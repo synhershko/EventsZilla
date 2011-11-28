@@ -23,9 +23,18 @@ namespace EventsZilla
 			filters.Add(new HandleErrorAttribute());
 		}
 
+		private const string MatchPositiveInteger = @"\d{1,10}";
+
 		public static void RegisterRoutes(RouteCollection routes)
 		{
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+			routes.MapRoute(
+				"EventsDisplay",
+				"event/{id}/{*slug}",
+				new { controller = "Event", action = "Index" },
+				new { id = MatchPositiveInteger }
+			);
 
 			routes.MapRoute(
 				"Default", // Route name
