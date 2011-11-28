@@ -1,5 +1,4 @@
-﻿@using EventsZilla.Core
-@using EventsZilla.Models
+﻿@using EventsZilla.Models
 @model Event
 
 @{
@@ -7,6 +6,8 @@
 	Layout = "_Layout";
 }
 
-<h2>@Model.Title</h2>
+<p>@ViewBag.Message</p>
 
-@Model.Description.CompiledMarkdownContent()
+@{ Html.RenderPartial("EventDisplayPartial", Model); }
+
+@{ Html.RenderPartial("RegistrationFormPartial", new EventRegistration()); }

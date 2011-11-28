@@ -97,6 +97,7 @@
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Core\ContentHelpers.cs" />
+    <Compile Include="Core\RavenIndexDefinitions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -104,6 +105,7 @@
     <Compile Include="Models\Event.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Models\EventRegistration.cs" />
     <Compile Include="Models\Presenter.cs" />
     <Compile Include="Models\Venue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -161,6 +163,12 @@
       <Project>{238D8AAA-FD89-48E7-9446-ADCDE845B58E}</Project>
       <Name>Loci.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Event\EventDisplayPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Event\RegistrationFormPartial.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

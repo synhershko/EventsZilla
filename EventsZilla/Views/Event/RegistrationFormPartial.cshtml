@@ -1,0 +1,11 @@
+﻿@using EventsZilla.Models
+@model EventRegistration
+<p>
+    @{ using (Html.BeginForm("Register", "Event", FormMethod.Post))
+       {
+        @Html.DisplayFor(x => x.RegistrantName)
+        @Html.DisplayFor(x => x.RegistrantEmail)
+        @Html.DisplayFor(x => x.EventId)
+       }
+    }
+</p>
