@@ -99,6 +99,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ContentPage.cs" />
+    <Compile Include="Models\Event.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Presenter.cs" />
+    <Compile Include="Models\Venue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
