@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using HibernatingRhinos.Loci.Common.Models;
 using MarkdownDeep;
 
@@ -25,6 +21,36 @@ namespace EventsZilla.Core
 
 			var contents = md.Transform(str);
 			return MvcHtmlString.Create(contents);
+		}
+
+		public static MvcHtmlString CompiledContent(this IDynamicContent contentItem, bool trustContent = false)
+		{
+			if (contentItem == null) return MvcHtmlString.Empty;
+
+			switch (contentItem.ContentType)
+			{
+				case DynamicContentType.Markdown:
+					var md = new Markdown
+					{
+						AutoHeadingIDs = true,
+						ExtraMode = true,
+						NoFollowLinks = !trustContent,
+						SafeMode = false,
+						NewWindowForExternalLinks = true,
+					};
+
+					var contents = contentItem.Content;
+					contents = md.Transform(contents);
+					return MvcHtmlString.Create(contents);
+				case DynamicContentType.Html:
+					return trustContent ? MvcHtmlString.Create(contentItem.Content) : MvcHtmlString.Empty;
+			}
+			return MvcHtmlString.Empty;
+		}
+
+		public static string FullContentPageId(string slug)
+		{
+			return "contentpages/" + slug;
 		}
 	}
 }

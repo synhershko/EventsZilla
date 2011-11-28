@@ -1,0 +1,69 @@
+﻿@using EventsZilla.Models
+@using HibernatingRhinos.Loci.Common.Models
+@model ContentPage
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>@{ if (Model.Id == null) {<text>Add</text>} else {<text>Edit</text>}  }</h2>
+
+@section HeadSection {
+<script type="text/javascript" src="@Url.Content("~/Static/Scripts/MarkdownDeepLib.min.js")"></script>
+<link rel="stylesheet" href="@Url.Content("~/Static/Scripts/mdd_styles.css")">
+}
+
+@using (Html.BeginForm())
+ {
+ 	@Html.ValidationSummary(true)
+ 	<fieldset>
+		<legend>ContentPage</legend>
+
+		<div class="editor-label">
+			@Html.LabelFor(model => model.Title)
+		</div>
+		<div class="editor-field">
+			@Html.EditorFor(model => model.Title)
+			@Html.ValidationMessageFor(model => model.Title)
+		</div>
+
+		@if (Model.ContentType == DynamicContentType.Markdown)
+		{
+			<div class="editor-label">
+				@Html.LabelFor(model => model.Content)
+			</div>
+			<div class="editor-field">
+				<div class="mdd_toolbar"></div>
+				@Html.TextAreaFor(x => x.Content, new {@class = "mdd_editor", cols = 50, rows = 10})
+				<div class="mdd_resizer"></div>
+				<div class="mdd_preview"></div>
+			</div>
+
+			<script type="text/javascript">
+                $("textarea.mdd_editor").MarkdownDeep({
+                        help_location: "@Url.Content("~/Static/Scripts/mdd_help.htm")",
+                        disableTabHandling: true
+                    });
+            </script>
+		}
+		else
+		{
+			<div class="editor-label">
+				@Html.LabelFor(model => model.Content)
+			</div>
+			<div class="editor-field">
+				@Html.EditorFor(model => model.Content)
+				@Html.ValidationMessageFor(model => model.Content)
+			</div>
+		}
+
+		<p>
+			<input type="submit" value="Save" />
+		</p>
+	</fieldset>
+ }
+	
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

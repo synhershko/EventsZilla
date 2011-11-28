@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace EventsZilla.Models
@@ -12,16 +13,24 @@ namespace EventsZilla.Models
 		}
 
 		public int Id { get; set; }
+
+		[Required]
 		public string Title { get; set; }
 		public string Slug { get; set; }
+
+		[DataType(DataType.MultilineText)]
 		public string Description { get; set; } // markdown content
 
 		public string VenueId { get; set; }
 
 		public DateTimeOffset CreatedAt { get; set; }
 
+		[DataType(DataType.DateTime)]
 		public DateTimeOffset RegistrationOpens { get; set; }
+		
+		[DataType(DataType.DateTime)]
 		public DateTimeOffset RegistrationCloses { get; set; }
+
 		public int AvailableSeats { get; set; }
 
 		public class ScheduleSlot
@@ -31,7 +40,7 @@ namespace EventsZilla.Models
 			public string Brief { get; set; } // markdown
 			public DateTimeOffset StartingAt { get; set; }
 			public DateTimeOffset EndingAt { get; set; }
-			
+			// TODO: Artifacts
 		}
 		public List<ScheduleSlot> Schedule { get; set; }
 

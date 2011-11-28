@@ -94,10 +94,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RegisterClientValidationExtensions.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ContentPagesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\EventsController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Core\ContentHelpers.cs" />
     <Compile Include="Core\RavenIndexDefinitions.cs" />
+    <Compile Include="Core\SlugConverter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -112,24 +117,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Static\Site.css" />
     <Content Include="RavenNotReachable.htm" />
-    <Content Include="Scripts\jquery-1.7-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.7.js" />
-    <Content Include="Scripts\jquery-1.7.min.js" />
-    <Content Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\MarkdownDeep License.txt" />
-    <Content Include="Scripts\MarkdownDeep Quick Reference.txt" />
-    <Content Include="Scripts\MarkdownDeepLib.min.js" />
-    <Content Include="Scripts\mdd_ajax_loader.gif" />
-    <Content Include="Scripts\mdd_gripper.png" />
-    <Content Include="Scripts\mdd_help.htm" />
-    <Content Include="Scripts\mdd_modal_background.png" />
-    <Content Include="Scripts\mdd_styles.css" />
-    <Content Include="Scripts\mdd_toolbar.png" />
-    <Content Include="Scripts\modernizr-2.0.6-development-only.js" />
+    <Content Include="Static\Scripts\jquery-1.7-vsdoc.js" />
+    <Content Include="Static\Scripts\jquery-1.7.js" />
+    <Content Include="Static\Scripts\jquery-1.7.min.js" />
+    <Content Include="Static\Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Static\Scripts\jquery.validate.js" />
+    <Content Include="Static\Scripts\jquery.validate.min.js" />
+    <Content Include="Static\Scripts\MarkdownDeep License.txt" />
+    <Content Include="Static\Scripts\MarkdownDeep Quick Reference.txt" />
+    <Content Include="Static\Scripts\MarkdownDeepLib.min.js" />
+    <Content Include="Static\Scripts\mdd_ajax_loader.gif" />
+    <Content Include="Static\Scripts\mdd_gripper.png" />
+    <Content Include="Static\Scripts\mdd_help.htm" />
+    <Content Include="Static\Scripts\mdd_modal_background.png" />
+    <Content Include="Static\Scripts\mdd_styles.css" />
+    <Content Include="Static\Scripts\mdd_toolbar.png" />
+    <Content Include="Static\Scripts\modernizr-2.0.6-development-only.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -137,16 +142,16 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\MicrosoftAjax.js" />
-    <Content Include="Scripts\MicrosoftAjax.debug.js" />
-    <Content Include="Scripts\MicrosoftMvcAjax.js" />
-    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
-    <Content Include="Scripts\MicrosoftMvcValidation.js" />
-    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Static\Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Static\Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Static\Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Static\Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Static\Scripts\MicrosoftAjax.js" />
+    <Content Include="Static\Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Static\Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Static\Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Static\Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Static\Scripts\MicrosoftMvcValidation.debug.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -169,6 +174,35 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Event\RegistrationFormPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Events\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Static\Images\" />
+    <Folder Include="Static\Uploads\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Events\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\ContentPage.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\ContentPages\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\ContentPages\Edit.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

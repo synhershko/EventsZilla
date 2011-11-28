@@ -1,0 +1,39 @@
+﻿@using EventsZilla.Models
+@model IEnumerable<ContentPage>
+@{
+    ViewBag.Title = "- Content pages list";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Add")
+</p>
+<table>
+    <tr>
+        <th>
+            Title
+        </th>
+        <th>
+            Slug
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Slug)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Slug }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Slug }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Slug })
+        </td>
+    </tr>
+}
+
+</table>

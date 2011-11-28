@@ -1,0 +1,10 @@
+﻿@using EventsZilla.Core
+@model EventsZilla.Models.ContentPage
+
+@{
+    ViewBag.Title = @Model.Title;
+}
+
+<h2>@Model.Title</h2>
+
+@Model.CompiledContent()
