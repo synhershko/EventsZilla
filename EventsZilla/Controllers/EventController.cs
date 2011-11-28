@@ -22,7 +22,7 @@ namespace EventsZilla.Controllers
         }
 
 		[HttpPost]
-		public ActionResult Register(int id, string slug, EventRegistration reg)
+		public ActionResult Register(int id, EventRegistration reg)
 		{
 			if (!ModelState.IsValid)
 				return RedirectToAction("Index", new {id = reg.EventId});

@@ -61,5 +61,10 @@ namespace EventsZilla.Models
 				return lastSession == null ? DateTimeOffset.MaxValue : lastSession.EndingAt;
 			}
 		}
+
+		public string FullEventId()
+		{
+			return "events/" + Id;
+		}
 	}
 }

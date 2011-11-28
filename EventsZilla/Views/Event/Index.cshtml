@@ -9,4 +9,4 @@
 
 @{ Html.RenderPartial("EventDisplayPartial", Model); }
 
-@{ Html.RenderPartial("RegistrationFormPartial", new EventRegistration()); }
+@{ Html.RenderPartial("RegistrationFormPartial", new EventRegistration {EventId = Model.FullEventId() }); }

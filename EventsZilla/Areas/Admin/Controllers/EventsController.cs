@@ -17,7 +17,7 @@ namespace EventsZilla.Areas.Admin.Controllers
 		[HttpGet]
 		public ActionResult Create()
 		{
-			return View("Edit", new Event());
+			return View("Edit", new Event {AvailableSeats = 0, RegistrationCloses = DateTimeOffset.MaxValue});
 		}
 
 		[HttpPost]

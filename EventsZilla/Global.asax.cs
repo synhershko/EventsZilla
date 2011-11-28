@@ -30,6 +30,13 @@ namespace EventsZilla
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
 			routes.MapRoute(
+				"Register",
+				"register/{id}",
+				new { controller = "Event", action = "Register" },
+				new { id = MatchPositiveInteger }
+			);
+
+			routes.MapRoute(
 				"EventsDisplay",
 				"event/{id}/{*slug}",
 				new { controller = "Event", action = "Index" },

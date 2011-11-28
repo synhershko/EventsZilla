@@ -1,11 +1,16 @@
-﻿@using EventsZilla.Models
+﻿@using EventsZilla.Core
+@using EventsZilla.Models
 @model EventRegistration
-<p>
-    @{ using (Html.BeginForm("Register", "Event", FormMethod.Post))
+
+<div>
+    <h3>Register now</h3>
+    @{ using (Html.BeginForm("Register", "Event", new {id = Model.EventIntId()}, FormMethod.Post))
        {
-        @Html.DisplayFor(x => x.RegistrantName)
-        @Html.DisplayFor(x => x.RegistrantEmail)
-        @Html.DisplayFor(x => x.EventId)
+        <p>@Html.LabelFor(x => x.RegistrantName) @Html.EditorFor(x => x.RegistrantName)</p>
+        <p>@Html.LabelFor(x => x.RegistrantEmail) @Html.EditorFor(x => x.RegistrantEmail)</p>
+        @Html.HiddenFor(x => x.EventId)
+
+        <p><input type="submit" value="Register" /></p>
        }
     }
-</p>
+</div>

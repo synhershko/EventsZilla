@@ -101,6 +101,7 @@
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Core\ContentHelpers.cs" />
+    <Compile Include="Core\RavenHelpers.cs" />
     <Compile Include="Core\RavenIndexDefinitions.cs" />
     <Compile Include="Core\SlugConverter.cs" />
     <Compile Include="Global.asax.cs">
