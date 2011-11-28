@@ -1,0 +1,12 @@
+﻿@using EventsZilla.Core
+@using EventsZilla.Models
+@model Event
+
+@{
+	ViewBag.Title = Model.Title;
+	Layout = "_Layout";
+}
+
+<h2>@Model.Title</h2>
+
+@Model.Description.CompiledMarkdownContent()
