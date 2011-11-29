@@ -11,5 +11,5 @@
 
 @{ Html.RenderPartial("EventDisplayPartial", Model); }
 
-<a name="register></a>
+<a name="register"></a>
 @{ Html.RenderPartial("RegistrationFormPartial", new EventRegistration {EventId = Model.FullEventId() }); }
