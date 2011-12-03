@@ -112,6 +112,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\EventRegistration.cs" />
+    <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\Presenter.cs" />
     <Compile Include="Models\Venue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
