@@ -2,6 +2,7 @@
 @model Event
 @{
     ViewBag.Title = Model.Title;
+    var siteConfig = ViewBag.SiteConfig as SiteConfig ?? new SiteConfig();
 }
 <p>@ViewBag.Message</p>
 <div class="holder_content1">
@@ -9,7 +10,17 @@
     @{ Html.RenderPartial("EventDisplayPartial", Model); }
 	</section>
     <section class="group5">
-<a name="register"></a>
-@{ Html.RenderPartial("RegistrationFormPartial", new EventRegistration { EventId = Model.FullEventId() }); }
+
+@if (Model.StartsAt > DateTimeOffset.Now)
+{
+	if (siteConfig.RequireRegistration)
+	 {
+	 	<a name="register"></a>
+	 	Html.RenderPartial("RegistrationFormPartial", new EventRegistration {EventId = Model.FullEventId()});
+	 }
+} else
+{
+    Html.RenderPartial("FeedbackFormPartial", new Feedback { EventId = Model.FullEventId() });
+}
 	</section>
 </div>
