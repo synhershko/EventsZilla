@@ -2,11 +2,10 @@
 using System.Web.Mvc;
 using System.Linq;
 using EventsZilla.Models;
-using HibernatingRhinos.Loci.Common.Controllers;
 
 namespace EventsZilla.Controllers
 {
-    public class HomeController : RavenController
+    public class HomeController : ZillaController
     {
         public ActionResult Index()
         {

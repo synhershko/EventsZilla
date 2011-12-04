@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using EventsZilla.Models;
 using HibernatingRhinos.Loci.Common.Controllers;
 using HibernatingRhinos.Loci.Common.Routing;
 using HibernatingRhinos.Loci.Common.Tasks;
@@ -60,8 +61,6 @@ namespace EventsZilla
 
 			InitializeRaven();
 
-
-
 			RavenController.DocumentStore = _store;
 			TaskExecutor.DocumentStore = _store;
 
@@ -93,6 +92,15 @@ namespace EventsZilla
 				Store.Conventions.DocumentKeyGenerator = entity => generator.GenerateDocumentKey(Store.Conventions, entity);
 
 				IndexCreation.CreateIndexes(Assembly.GetCallingAssembly(), _store);
+
+				using (var session = _store.OpenSession())
+				{
+					if (session.Load<SiteConfig>(SiteConfig.ConfigName) == null)
+					{
+						session.Store(new SiteConfig { RequireRegistration = true }, SiteConfig.ConfigName);
+						session.SaveChanges();
+					}
+				}
 
 				ConfigureVersioning();
 			}

@@ -1,4 +1,8 @@
 ﻿@using EventsZilla.Core
+@using EventsZilla.Models
+@{
+	var siteConfig = ViewBag.SiteConfig as SiteConfig ?? new SiteConfig();
+}
 <!doctype html>  
 <head>
 <meta charset="UTF-8">
@@ -49,7 +53,9 @@
     <!--end header-->
 	</header>
 
-    @RenderBody()   
+    @MvcHtmlString.Create(siteConfig.WebsiteHeader)
+
+    @RenderBody()
 
     </div>
    <!--end container-->

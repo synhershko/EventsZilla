@@ -100,6 +100,7 @@
     <Compile Include="Areas\Admin\Controllers\EventsController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ZillaController.cs" />
     <Compile Include="Core\ContentHelpers.cs" />
     <Compile Include="Core\RavenHelpers.cs" />
     <Compile Include="Core\RavenIndexDefinitions.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="Models\EventRegistration.cs" />
     <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\Presenter.cs" />
+    <Compile Include="Models\SiteConfig.cs" />
     <Compile Include="Models\Venue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
