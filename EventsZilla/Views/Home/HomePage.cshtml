@@ -1,21 +1,43 @@
 ﻿@using EventsZilla.Core
-@model EventsZilla.Models.ContentPage
+@model EventsZilla.ViewModels.HomepageViewModel
 @{
     ViewBag.Title = "HomePage";
 }
 
-@Model.CompiledContent()
+@Model.Content
 
   <div class="holder_content1">
     <section class="group4">
    <h3>Next event</h3>
-   	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie. Sed aliquam sem ut arcu. Phasellus sollicitudin. 
-	Vestibulum condimentum  facilisis nulla. In hac habitasse platea dictumst. Nulla nonummy. Cras quis libero.</p>
+@if (Model.NextEvent != null)
+{
+    <a href="@Url.Action("Index", "Event", new { id = Model.NextEvent.Id, slug = Model.NextEvent.Slug })"><h4>@Model.NextEvent.Title</h4></a>
+    <p>@Html.Html5EventDateTimeTag(Model.NextEvent.StartsAt, Model.NextEvent.EndsAt)</p>
+    <h4>@Model.NextEvent.Title</h4>
+	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie. Sed aliquam sem ut arcu. Phasellus sollicitudin. 
+		Vestibulum condimentum  facilisis nulla. In hac habitasse platea dictumst. Nulla nonummy. Cras quis libero.</p>
+}
+else
+{
+	<p>There are no events planned at the moment</p>
+}
 	</section>
 
    <section class="group5">
    <h3>Past events</h3>
-   	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie. Sed aliquam sem ut arcu. Phasellus sollicitudin. 
-	Vestibulum condimentum  facilisis nulla. In hac habitasse platea dictumst. Nulla nonummy. Cras quis libero.</p>
+@if (Model.PastEvents != null && Model.PastEvents.Count > 0)
+{
+    foreach (var e in Model.PastEvents)
+    {
+        <a href="@Url.Action("Index", "Event", new { id = e.Id, slug = e.Slug })"><h4>@e.Title</h4></a>
+        <p>@Html.Html5EventDateTimeTag(e.StartsAt, e.EndsAt)</p>
+		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie. Sed aliquam sem ut arcu. Phasellus sollicitudin. 
+		Vestibulum condimentum  facilisis nulla. In hac habitasse platea dictumst. Nulla nonummy. Cras quis libero.</p>
+    }
+}
+else
+{
+	<p>No events to show</p>
+}
 	</section>
     </div>

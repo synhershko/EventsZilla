@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Web.Mvc;
 using System.Linq;
+using EventsZilla.Core;
 using EventsZilla.Models;
+using EventsZilla.ViewModels;
 
 namespace EventsZilla.Controllers
 {
@@ -9,8 +11,15 @@ namespace EventsZilla.Controllers
     {
         public ActionResult Index()
         {
-        	var content = RavenSession.Load<ContentPage>(ContentPage.IdFromSlug("homepage"));
-        	return View("HomePage", content);
+			var cachableNow = GetCachableNow(); // if we were using DateTimeOffset.Now the query below would have never have cached
+        	var vm = new HomepageViewModel
+        	         	{
+							Content = RavenSession.Load<ContentPage>(ContentPage.IdFromSlug("homepage")).Content.CompiledMarkdownContent(),
+        	         		PastEvents = RavenSession.Query<Event>().Where(x => x.EndsAt >= cachableNow).OrderBy(x => x.StartsAt).ToList(),
+							NextEvent = RavenSession.Query<Event>().Where(x => x.StartsAt >= cachableNow).OrderBy(x => x.StartsAt).FirstOrDefault(),
+        	         	};
+
+        	return View("HomePage", vm);
         }
 
 		public ActionResult FutureEvents()

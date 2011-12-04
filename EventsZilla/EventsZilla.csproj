@@ -117,6 +117,7 @@
     <Compile Include="Models\Presenter.cs" />
     <Compile Include="Models\SiteConfig.cs" />
     <Compile Include="Models\Venue.cs" />
+    <Compile Include="Models\ViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
