@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using HibernatingRhinos.Loci.Common.Models;
 using MarkdownDeep;
 
@@ -66,6 +67,19 @@ namespace EventsZilla.Core
 		public static string ImageFromStatic(this UrlHelper url, string imagePath)
 		{
 			return url.Content("~/Static/images/" + imagePath);
+		}
+
+		public static MvcHtmlString Html5EventDateTimeTag(this HtmlHelper html, DateTimeOffset timestamp)
+		{
+			return MvcHtmlString.Create(string.Format(@"<time datetime=""{0}"">{1}</time>", timestamp.ToString("yyyy-MM-ddTHH:mm"), timestamp.ToString("dddd, dd MMMM yyyy, HH:mm")));
+		}
+
+		public static MvcHtmlString Html5EventDateTimeTag(this HtmlHelper html, DateTimeOffset beginsAt, DateTimeOffset endsAt)
+		{
+			return
+				MvcHtmlString.Create(string.Format(@"<time datetime=""{0}"">{1} - {2}</time>", beginsAt.ToString("yyyy-MM-ddTHH:mm"),
+				                                   beginsAt.ToString("dddd, dd MMMM yyyy, HH:mm"),
+				                                   beginsAt.ToString("HH:mm")));
 		}
 	}
 }

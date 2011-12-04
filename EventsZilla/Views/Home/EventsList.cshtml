@@ -1,0 +1,24 @@
+﻿@using EventsZilla.Core
+@using EventsZilla.Models
+@model IEnumerable<Event>
+
+<div class="holder_content1">
+    <section class="group4">
+   <h3>@ViewBag.Title</h3>
+
+   @if (Model == null || Model.Count() == 0)
+   {
+   	<p>No events found</p>
+   } else
+   {
+   	foreach (var e in Model)
+   	{
+		<a href="@Url.Action("Index", "Event", new { id = e.Id, slug = e.Slug } )"><h4>@e.Title</h4></a>
+        <p>@Html.Html5EventDateTimeTag(e.StartsAt, e.EndsAt)</p>
+       
+		@e.Description.CompiledMarkdownContent()
+    }
+   }
+	
+</section>
+</div>

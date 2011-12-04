@@ -10,7 +10,7 @@ namespace EventsZilla.Core
 		public Events_BasicIndex()
 		{
 			Map = events => from e in events
-			                select new {e.RegistrationOpens, e.RegistrationCloses, e.VenueId};
+			                select new {e.RegistrationOpens, e.RegistrationCloses, e.VenueId, e.StartsAt, e.EndsAt};
 		}
 	}
 
