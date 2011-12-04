@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using EventsZilla.Core;
@@ -28,6 +29,17 @@ namespace EventsZilla.Areas.Admin.Controllers
 
 			e.Slug = SlugConverter.TitleToSlug(e.Title);
 			e.CreatedAt = DateTimeOffset.Now;
+
+			e.Schedule = new List<Event.ScheduleSlot>
+			             	{
+			             		new Event.ScheduleSlot
+			             			{
+			             				Brief = "",
+										StartingAt = DateTimeOffset.MinValue,
+										EndingAt = DateTimeOffset.MaxValue,
+										Title = "",
+			             			}
+			             	};
 
 			RavenSession.Store(e);
 
