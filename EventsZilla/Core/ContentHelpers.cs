@@ -52,5 +52,20 @@ namespace EventsZilla.Core
 		{
 			return "contentpages/" + slug;
 		}
+
+		public static string StyleFromStatic(this UrlHelper url, string stylesheetName)
+		{
+			return url.Content("~/Static/css/" + stylesheetName);
+		}
+
+		public static string ScriptFromStatic(this UrlHelper url, string scriptName)
+		{
+			return url.Content("~/Static/scripts/" + scriptName);
+		}
+
+		public static string ImageFromStatic(this UrlHelper url, string imagePath)
+		{
+			return url.Content("~/Static/images/" + imagePath);
+		}
 	}
 }

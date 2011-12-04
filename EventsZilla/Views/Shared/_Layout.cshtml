@@ -1,20 +1,66 @@
-﻿<!DOCTYPE html>
-
-<html>
+﻿@using EventsZilla.Core
+<!doctype html>  
 <head>
-    <title>@ViewBag.Title</title>
+<meta charset="UTF-8">
+<title>EventsZilla @ViewBag.Title</title>
+<link rel="icon" href="@Url.ImageFromStatic("favicon.gif")" type="image/x-icon"/>
 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-    <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
 
-    <script src="@Url.Content("~/Static/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
-    <script src="@Url.Content("~/Static/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<link rel="shortcut icon" href="@Url.ImageFromStatic("favicon.gif")" type="image/x-icon"/> 
+<link rel="stylesheet" type="text/css" href="@Url.StyleFromStatic("styles.css")"/>
+<link type="text/css" href="@Url.StyleFromStatic("css3.css")" rel="stylesheet" />
 
-    @RenderSection("HeadSection", false)
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script src="@Url.ScriptFromStatic("jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.ScriptFromStatic("jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script type="text/javascript" src="@Url.ScriptFromStatic("jquery.pikachoose.js")"></script>
+<script language="javascript">
+    $(document).ready(
+				function () {
+				    $("#pikame").PikaChoose();
+				});
+		</script>
+
+@RenderSection("HeadSection", false)
+
 </head>
 <body>
-    <div>
-        @RenderBody()
+	
+    <!--start container-->
+    <div id="container">
+
+    <!--start header-->
+
+    <header>
+    <a href="#" id="logo"><img src="@Url.ImageFromStatic("logo.png")" width="221" height="100" alt=""/></a>    
+	<nav>
+    <ul>
+    <li><a href="#" class="current">Home</a></li>
+    <li><a href="#">Next event</a></li>
+    <li><a href="#">Future events</a></li>
+	<li><a href="#">Past events</a></li>
+    <li><a href="#">Contact</a></li>
+    </ul>
+    </nav>
+	
+    <!--end header-->
+	</header>
+
+    @RenderBody()   
+
     </div>
-</body>
-</html>
+   <!--end container-->
+   
+   <!--start footer-->
+   <footer>
+   <div class="container">  
+   <div id="FooterTwo"> © 2011 Think simple </div>
+   <div id="FooterTree"> Valid html5, design and code by <a href="http://www.marijazaric.com">marija zaric - creative simplicity</a>   </div> 
+   </div>
+   </footer>
+   <!--end footer-->
+<!-- Free template distributed by http://freehtml5templates.com -->   
+   </body></html>

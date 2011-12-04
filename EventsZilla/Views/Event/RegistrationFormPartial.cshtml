@@ -2,7 +2,6 @@
 @using EventsZilla.Models
 @model EventRegistration
 
-<div>
     <h3>Register now</h3>
     @{ using (Html.BeginForm("Register", "Event", new {id = Model.EventIntId()}, FormMethod.Post))
        {
@@ -13,4 +12,3 @@
         <p><input type="submit" value="Register" /></p>
        }
     }
-</div>

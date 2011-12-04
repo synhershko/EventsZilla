@@ -1,15 +1,15 @@
 ﻿@using EventsZilla.Models
 @model Event
-
 @{
-	ViewBag.Title = Model.Title;
+    ViewBag.Title = Model.Title;
 }
-
 <p>@ViewBag.Message</p>
-
-<p><a href="#register">Register to this event...</a></p>
-
-@{ Html.RenderPartial("EventDisplayPartial", Model); }
-
+<div class="holder_content1">
+    <section class="group4">
+    @{ Html.RenderPartial("EventDisplayPartial", Model); }
+	</section>
+    <section class="group5">
 <a name="register"></a>
-@{ Html.RenderPartial("RegistrationFormPartial", new EventRegistration {EventId = Model.FullEventId() }); }
+@{ Html.RenderPartial("RegistrationFormPartial", new EventRegistration { EventId = Model.FullEventId() }); }
+	</section>
+</div>
