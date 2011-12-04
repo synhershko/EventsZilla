@@ -35,22 +35,17 @@
 	
     <!--start container-->
     <div id="container">
-
-    <!--start header-->
-
     <header>
-    <a href="#" id="logo"><img src="@Url.ImageFromStatic("logo.png")" width="221" height="100" alt=""/></a>    
+    <a href="@Url.Action("Index", "Home")" id="logo"><img src="@Url.ImageFromStatic("logo.png")" width="221" height="100" alt=""/></a>    
 	<nav>
     <ul>
-    <li><a href="#" class="current">Home</a></li>
-    <li><a href="#">Next event</a></li>
+    <li><a href="@Url.Action("Index", "Home")" class="current">Home</a></li>
+    <li><a href="@Url.Action("NextEvent", "Home")">Next event</a></li>
     <li><a href="@Url.Action("FutureEvents", "Home")">Future events</a></li>
 	<li><a href="@Url.Action("PastEvents", "Home")">Past events</a></li>
     <li><a href="#">Contact</a></li>
     </ul>
     </nav>
-	
-    <!--end header-->
 	</header>
 
     @MvcHtmlString.Create(siteConfig.WebsiteHeader)
