@@ -15,7 +15,7 @@ namespace EventsZilla.Controllers
         	var vm = new HomepageViewModel
         	         	{
 							Content = RavenSession.Load<ContentPage>(ContentPage.IdFromSlug("homepage")).Content.CompiledMarkdownContent(),
-        	         		PastEvents = RavenSession.Query<Event>().Where(x => x.EndsAt >= cachableNow).OrderBy(x => x.StartsAt).ToList(),
+        	         		PastEvents = RavenSession.Query<Event>().Where(x => x.EndsAt < cachableNow).OrderBy(x => x.StartsAt).ToList(),
 							NextEvent = RavenSession.Query<Event>().Where(x => x.StartsAt >= cachableNow).OrderBy(x => x.StartsAt).FirstOrDefault(),
         	         	};
 
@@ -25,7 +25,7 @@ namespace EventsZilla.Controllers
 		public ActionResult FutureEvents()
 		{
 			var cachableNow = GetCachableNow(); // if we were using DateTimeOffset.Now the query below would have never have cached
-			var events = RavenSession.Query<Event>().Where(x => x.StartsAt <= cachableNow).OrderBy(x => x.StartsAt).ToArray();
+			var events = RavenSession.Query<Event>().Where(x => x.StartsAt >= cachableNow).OrderBy(x => x.StartsAt).ToArray();
 
 			ViewBag.Title = "Future events";
 			return View("EventsList", events);
@@ -34,7 +34,7 @@ namespace EventsZilla.Controllers
 		public ActionResult PastEvents()
 		{
 			var cachableNow = GetCachableNow(); // if we were using DateTimeOffset.Now the query below would have never have cached
-			var events = RavenSession.Query<Event>().Where(x => x.EndsAt >= cachableNow).OrderBy(x => x.StartsAt).ToArray();
+			var events = RavenSession.Query<Event>().Where(x => x.EndsAt < cachableNow).OrderBy(x => x.StartsAt).ToArray();
 
 			ViewBag.Title = "Past events";
 			return View("EventsList", events);
