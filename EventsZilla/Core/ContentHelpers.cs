@@ -76,10 +76,8 @@ namespace EventsZilla.Core
 
 		public static MvcHtmlString Html5EventDateTimeTag(this HtmlHelper html, DateTimeOffset beginsAt, DateTimeOffset endsAt)
 		{
-			return
-				MvcHtmlString.Create(string.Format(@"<time datetime=""{0}"">{1} - {2}</time>", beginsAt.ToString("yyyy-MM-ddTHH:mm"),
-				                                   beginsAt.ToString("dddd, dd MMMM yyyy, HH:mm"),
-				                                   beginsAt.ToString("HH:mm")));
+			return MvcHtmlString.Create(string.Format(@"<time datetime=""{0}"">{1} - {2}</time>", beginsAt.ToString("yyyy-MM-ddTHH:mm"),
+				                                   beginsAt.ToString("dddd, dd MMMM yyyy, HH:mm"), endsAt.ToString("HH:mm")));
 		}
 	}
 }
