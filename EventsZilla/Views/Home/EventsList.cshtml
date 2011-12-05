@@ -13,10 +13,13 @@
    {
    	foreach (var e in Model)
    	{
-		<a href="@Url.Action("Index", "Event", new { id = e.Id, slug = e.Slug } )"><h4>@e.Title</h4></a>
-        <p>@Html.Html5EventDateTimeTag(e.StartsAt, e.EndsAt)</p>
+        @Html.Html5EventDateTimeTag(e.StartsAt, e.EndsAt)
+
+		<a href="@Url.Action("Index", "Event", new { id = e.Id, slug = e.Slug })"><h4>@e.Title</h4></a>
        
 		@e.Description.CompiledMarkdownContent()
+
+        <p>&nbsp;</p>        
     }
    }
 	

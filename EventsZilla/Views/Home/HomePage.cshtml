@@ -11,11 +11,9 @@
    <h3>Next event</h3>
 @if (Model.NextEvent != null)
 {
+    @Html.Html5EventDateTimeTag(Model.NextEvent.StartsAt, Model.NextEvent.EndsAt)
     <a href="@Url.Action("Index", "Event", new { id = Model.NextEvent.Id, slug = Model.NextEvent.Slug })"><h4>@Model.NextEvent.Title</h4></a>
-    <p>@Html.Html5EventDateTimeTag(Model.NextEvent.StartsAt, Model.NextEvent.EndsAt)</p>
-    <h4>@Model.NextEvent.Title</h4>
-	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie. Sed aliquam sem ut arcu. Phasellus sollicitudin. 
-		Vestibulum condimentum  facilisis nulla. In hac habitasse platea dictumst. Nulla nonummy. Cras quis libero.</p>
+	@Model.NextEvent.Description.CompiledMarkdownContent()
 }
 else
 {
@@ -30,9 +28,9 @@ else
     foreach (var e in Model.PastEvents)
     {
         <a href="@Url.Action("Index", "Event", new { id = e.Id, slug = e.Slug })"><h4>@e.Title</h4></a>
-        <p>@Html.Html5EventDateTimeTag(e.StartsAt, e.EndsAt)</p>
-		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie. Sed aliquam sem ut arcu. Phasellus sollicitudin. 
-		Vestibulum condimentum  facilisis nulla. In hac habitasse platea dictumst. Nulla nonummy. Cras quis libero.</p>
+        @Html.Html5EventDateTimeTag(e.StartsAt, e.EndsAt)
+        
+        @e.Description.CompiledMarkdownContent()
     }
 }
 else
