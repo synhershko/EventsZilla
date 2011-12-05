@@ -39,11 +39,11 @@
     <a href="@Url.Action("Index", "Home")" id="logo"><img src="@Url.ImageFromStatic("logo.png")" width="221" height="100" alt=""/></a>    
 	<nav>
     <ul>
-    <li><a href="@Url.Action("Index", "Home")" class="current">Home</a></li>
-    <li><a href="@Url.Action("NextEvent", "Home")">Next event</a></li>
-    <li><a href="@Url.Action("FutureEvents", "Home")">Future events</a></li>
-	<li><a href="@Url.Action("PastEvents", "Home")">Past events</a></li>
-    <li><a href="#">Contact</a></li>
+    <li><a href="@Url.Action("Index", "Home")" @if (ViewBag.CurrentPage == "home") {<text>class="current"</text>}>Home</a></li>
+    <li><a href="@Url.Action("NextEvent", "Home")" @if (ViewBag.CurrentPage == "next_event") {<text>class="current"</text>}>Next event</a></li>
+    <li><a href="@Url.Action("FutureEvents", "Home")" @if (ViewBag.CurrentPage == "future_events") {<text>class="current"</text>}>Future events</a></li>
+	<li><a href="@Url.Action("PastEvents", "Home")" @if (ViewBag.CurrentPage == "past_events") {<text>class="current"</text>}>Past events</a></li>
+    <li><a href="#" @if (ViewBag.CurrentPage == "contact") {<text>class="current"</text>}>Contact</a></li>
     </ul>
     </nav>
 	</header>

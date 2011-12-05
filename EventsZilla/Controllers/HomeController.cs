@@ -28,6 +28,7 @@ namespace EventsZilla.Controllers
 			var events = RavenSession.Query<Event>().Where(x => x.StartsAt >= cachableNow).OrderBy(x => x.StartsAt).ToArray();
 
 			ViewBag.Title = "Future events";
+			ViewBag.CurrentPage = "future_events";
 			return View("EventsList", events);
 		}
 
@@ -37,6 +38,7 @@ namespace EventsZilla.Controllers
 			var events = RavenSession.Query<Event>().Where(x => x.EndsAt < cachableNow).OrderBy(x => x.StartsAt).ToArray();
 
 			ViewBag.Title = "Past events";
+			ViewBag.CurrentPage = "past_events";
 			return View("EventsList", events);
 		}
 
