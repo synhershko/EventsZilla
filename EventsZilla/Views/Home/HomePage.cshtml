@@ -12,8 +12,9 @@
    <h3>Next event</h3>
 @if (Model.NextEvent != null)
 {
+    <a href="@Url.Action("Index", "Event", new { id = Model.NextEvent.Id, slug = Model.NextEvent.Slug })"><h3>@Model.NextEvent.Title</h3></a>
     @Html.Html5EventDateTimeTag(Model.NextEvent.StartsAt, Model.NextEvent.EndsAt)
-    <a href="@Url.Action("Index", "Event", new { id = Model.NextEvent.Id, slug = Model.NextEvent.Slug })"><h4>@Model.NextEvent.Title</h4></a>
+
 	@Model.NextEvent.Description.CompiledMarkdownContent()
 }
 else
@@ -28,10 +29,8 @@ else
 {
     foreach (var e in Model.PastEvents)
     {
-        <a href="@Url.Action("Index", "Event", new { id = e.Id, slug = e.Slug })"><h4>@e.Title</h4></a>
         @Html.Html5EventDateTimeTag(e.StartsAt, e.EndsAt)
-        
-        @e.Description.CompiledMarkdownContent()
+        <a href="@Url.Action("Index", "Event", new { id = e.Id, slug = e.Slug })"><h4>@e.Title</h4></a>
     }
 }
 else

@@ -4,4 +4,6 @@
 
 <h3>@Model.Title</h3>
 
+<p><b>When:</b> @Html.Html5EventDateTimeTag(Model.StartsAt, Model.EndsAt)</p>
+
 @Model.Description.CompiledMarkdownContent()
