@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Mvc;
 using EventsZilla.Core;
 using EventsZilla.Models;
+using EventsZilla.Models.SessionArtifacts;
 
 namespace EventsZilla.Areas.Admin.Controllers
 {
@@ -38,6 +39,7 @@ namespace EventsZilla.Areas.Admin.Controllers
 										StartingAt = DateTimeOffset.MinValue,
 										EndingAt = DateTimeOffset.MaxValue,
 										Title = "",
+										Artifacts = new List<ISessionArtifact>(),
 			             			}
 			             	};
 
