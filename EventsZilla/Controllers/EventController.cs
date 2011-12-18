@@ -21,31 +21,6 @@ namespace EventsZilla.Controllers
         }
 
 		[HttpPost]
-		public ActionResult GiveFeedback(Feedback feedback)
-		{
-			if (!ModelState.IsValid)
-			{
-				return HttpNotFound();
-			}
-
-			if (!string.IsNullOrWhiteSpace(feedback.EventId))
-			{
-				var e = RavenSession.Load<Event>(feedback.EventId);
-				if (e == null)
-					return HttpNotFound();
-
-				RavenSession.Store(feedback);
-
-				ViewBag.Message = MvcHtmlString.Create("Thanks for your feedback!");
-				return View("Index", e);
-			}
-
-			feedback.EventId = null;
-			RavenSession.Store(feedback);
-			return RedirectToAction("Index", "Home");
-		}
-
-		[HttpPost]
 		public ActionResult Register(int id, EventRegistration reg)
 		{
 			if (!ModelState.IsValid)

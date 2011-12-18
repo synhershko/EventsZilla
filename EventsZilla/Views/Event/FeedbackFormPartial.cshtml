@@ -1,27 +1,23 @@
 ﻿@model EventsZilla.Models.Feedback
 
-@using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
-    
+@using (Html.BeginForm("GiveFeedback", "Home"))
+{
     <h3>Feedback</h3>
     
     <p>Were you in the event? give us your feedback!</p>
-    
-    @Html.HiddenFor(x => x.EventId)
-
         <p>
             @Html.LabelFor(model => model.CommenterName)
         
             @Html.EditorFor(model => model.CommenterName)
-            @Html.ValidationMessageFor(model => model.CommenterName)
         </p>
 
         <p>
             @Html.LabelFor(model => model.Content)
 
             @Html.EditorFor(model => model.Content)
-            @Html.ValidationMessageFor(model => model.Content)
         </p>
-
+    
+        @Html.HiddenFor(model => model.EventId)
+    
         <p><input type="submit" value="Send" /></p>
 }

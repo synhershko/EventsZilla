@@ -57,5 +57,31 @@ namespace EventsZilla.Controllers
 			var exactNow = DateTimeOffset.Now;
 			return new DateTimeOffset(exactNow.Year, exactNow.Month, exactNow.Day, exactNow.Hour, 0, 0, exactNow.Offset);
 		}
+
+		[HttpPost]
+		public ActionResult GiveFeedback(Feedback feedback)
+		{
+			if (!ModelState.IsValid)
+			{
+				return HttpNotFound();
+			}
+
+			feedback.CreatedAt = DateTimeOffset.Now;
+
+			if (!string.IsNullOrWhiteSpace(feedback.EventId))
+			{
+				var e = RavenSession.Load<Event>(feedback.EventId);
+				if (e == null)
+					return HttpNotFound();
+
+				RavenSession.Store(feedback);
+
+				return RedirectToAction("Index", "Event", new {id = e.Id, slug = e.Slug});
+			}
+
+			feedback.EventId = null;
+			RavenSession.Store(feedback);
+			return RedirectToAction("Index", "Home");
+		}
     }
 }

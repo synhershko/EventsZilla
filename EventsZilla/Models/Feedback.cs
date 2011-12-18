@@ -8,6 +8,8 @@ namespace EventsZilla.Models
 	public class Feedback
 	{
 		public string EventId { get; set; }
+
+		[Required]
 		public string CommenterName { get; set; }
 
 		[Email]
