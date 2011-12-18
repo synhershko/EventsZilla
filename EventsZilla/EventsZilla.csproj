@@ -201,6 +201,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Static\uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Events\Edit.cshtml" />
