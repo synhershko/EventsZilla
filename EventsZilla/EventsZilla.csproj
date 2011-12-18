@@ -116,6 +116,7 @@
     <Compile Include="Models\EventRegistration.cs" />
     <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\Presenter.cs" />
+    <Compile Include="Models\SessionArtifacts.cs" />
     <Compile Include="Models\SiteConfig.cs" />
     <Compile Include="Models\Venue.cs" />
     <Compile Include="Models\ViewModels.cs" />
@@ -227,6 +228,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Event\FeedbackFormPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Event\ArtifactsDisplayPartial.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

@@ -610,3 +610,6 @@ nav ul li a.current{
 	margin-top:15px;
 }
 
+/******* TWEAKS */
+
+.holder_content1 a, .holder_content1 a:hover, .holder_content1 a:visited { color: #636; }

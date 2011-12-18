@@ -1,0 +1,52 @@
+﻿@using EventsZilla.Models
+@using EventsZilla.Models.SessionArtifacts
+@model Event
+
+<div class="holder_content1">
+    <section class="group4">
+
+@{
+	var images = from slot in Model.Schedule
+	             from artifact in slot.Artifacts
+                 let gallery = artifact as ImageGallery
+	             where gallery != null
+                 from img in gallery.ImageUrls
+	             select img;
+}
+
+@if (images.Count() > 0)
+{
+	<h3>Image Gallery</h3>
+	<div class="pikachoose">
+		<ul id="pikame">
+        @foreach (var img in images)
+		{
+			<li><a href="#"><img src="@img" width="500" height="250" alt=""></a><span></span></li>
+		}
+		</ul></div>
+}
+</section>
+
+   <section class="group5">
+
+@{
+	var links = from slot in Model.Schedule
+	             from artifact in slot.Artifacts
+                 let link = artifact as Link
+	             where link != null
+	             select link;
+}
+
+@if (links.Count() > 0)
+{
+	<h3>Downloads</h3>
+	foreach (var l in links)
+	{
+        <p><a href="@l.Url">@l.Title</a></p>	
+    }
+}
+
+	</section>
+
+   
+</div>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web.Mvc;
+using EventsZilla.Models.SessionArtifacts;
 
 namespace EventsZilla.Models
 {
@@ -43,7 +44,7 @@ namespace EventsZilla.Models
 			public string Brief { get; set; } // markdown
 			public DateTimeOffset StartingAt { get; set; }
 			public DateTimeOffset EndingAt { get; set; }
-			// TODO: Artifacts
+			public List<ISessionArtifact> Artifacts { get; set; }
 		}
 		public List<ScheduleSlot> Schedule { get; set; }
 
